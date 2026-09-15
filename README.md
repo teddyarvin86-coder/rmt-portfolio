@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-235%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-335%20passing-brightgreen.svg)](tests/)
 
 ---
 
@@ -201,11 +201,12 @@ rmt-portfolio/
 │   ├── run_risk_forecast.py         # 风险预测评估（第 7 节，核心结果）
 │   ├── run_robustness.py            # 6 类稳健性扫描（第 8 节）
 │   └── run_figures.py               # 22 张图，分 A–E 五组
-├── tests/                           # 235 个测试
+├── tests/                           # 335 个测试
 │   ├── test_mp_law.py               # 42 个
 │   ├── test_denoise.py              # 73 个
 │   ├── test_optimizers.py           # 68 个
-│   └── test_metrics.py              # 53 个
+│   ├── test_metrics.py              # 53 个
+│   └── test_backtest.py             # 99 个
 ├── docs/
 │   └── working_paper.md             # 完整工作论文（10+ 节）
 ├── figures/                         # 22 张 PNG + 对应数据 CSV
@@ -239,9 +240,18 @@ python experiments/run_robustness.py --sweep all --universe us_sector_etf
 python experiments/run_figures.py --group all
 
 # 6. 测试
-pytest                                  # 全部
+pytest                                  # 全部 335 个
+pytest tests/test_backtest.py -q        # 单文件
 pytest --cov=src/rmt_portfolio          # 带覆盖率
 ```
+
+| 测试文件 | 数量 | 覆盖内容 |
+|---|---:|---|
+| `test_mp_law.py` | 42 | MP 密度/分布、数值积分、Stieltjes 变换、信号数判定 |
+| `test_denoise.py` | 73 | 7 个估计量、相关矩阵标度、RIE 自洽方程、η 不敏感性 |
+| `test_optimizers.py` | 68 | 6 个分配器、风险贡献、ENB、规模/置换等变性 |
+| `test_metrics.py` | 53 | 年化、回撤（含首期）、VaR/CVaR、换手率 |
+| `test_backtest.py` | 99 | 调仓日程、成本模型、无未来信息、无交易带、批量网格 |
 
 ### 图表分组
 

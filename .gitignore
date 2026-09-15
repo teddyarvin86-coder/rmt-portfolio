@@ -79,3 +79,9 @@ data/cache/
 # Experiment outputs are tracked on purpose (they back the paper's tables),
 # but transient logs are not.
 results/**/_log_*.txt
+
+# ---- Assistant / local-only files ----
+# Tool-generated working memory and the original private project brief are
+# not part of the research artefact.
+.workbuddy-ai/
+介绍.txt

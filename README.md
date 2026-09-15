@@ -33,7 +33,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/your-username/rmt-portfolio.git
+git clone https://github.com/teddyarvin86-coder/rmt-portfolio.git
 cd rmt-portfolio
 
 python -m venv .venv

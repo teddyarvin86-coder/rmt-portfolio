@@ -67,10 +67,10 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/rmt-portfolio"
-Documentation = "https://github.com/your-username/rmt-portfolio#readme"
-Repository = "https://github.com/your-username/rmt-portfolio"
-Issues = "https://github.com/your-username/rmt-portfolio/issues"
+Homepage = "https://github.com/teddyarvin86-coder/rmt-portfolio"
+Documentation = "https://github.com/teddyarvin86-coder/rmt-portfolio#readme"
+Repository = "https://github.com/teddyarvin86-coder/rmt-portfolio"
+Issues = "https://github.com/teddyarvin86-coder/rmt-portfolio/issues"
 
 [project.scripts]
 rmt-spectrum = "experiments.run_spectrum_analysis:main"

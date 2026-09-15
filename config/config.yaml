@@ -1,0 +1,130 @@
+# =====================================================================
+# Random Matrix Theory Denoising & Hierarchical Risk Parity
+# Master configuration for the whole study.
+#
+# Every experiment is reproducible from this file plus the cached prices in
+# data/raw/.  Paths are relative to the project root.
+# =====================================================================
+
+project:
+  name: "RMT Denoising & Hierarchical Risk Parity"
+  version: "1.0.0"
+  seed: 20240915
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  figures: "figures"
+  results: "results"
+  docs: "docs"
+
+# ---------------------------------------------------------------------
+# Data
+# ---------------------------------------------------------------------
+data:
+  # Which universe to analyse.  Options are defined in
+  # src/rmt_portfolio/data/universes.py:
+  #   us_sector_etf | cn_sector_etf | us_single_stock
+  universe: "us_sector_etf"
+  start: "2005-01-01"
+  end: "2025-12-31"
+  return_type: "simple"      # simple | log  (simple for the backtester)
+  min_coverage: 0.95
+  repair_splits: true
+  align: "intersection"      # intersection -> perfectly balanced N x T panel
+  winsorise: null            # null = keep genuine tail events (recommended)
+  max_ffill: 3
+
+# ---------------------------------------------------------------------
+# Random matrix theory
+# ---------------------------------------------------------------------
+rmt:
+  # How to estimate the MP noise scale sigma.
+  #   median_bulk (default, robust) | mean_bulk | max_eigen | cdf_fit
+  sigma_method: "median_bulk"
+  trim: 0.2                  # fraction of top eigenvalues excluded from fits
+  # Soft-threshold sharpness (beta -> inf approaches hard thresholding)
+  soft_beta: 1.0
+  # Number of principal components for the statistical factor model.
+  # null -> data-driven (number of eigenvalues above the MP edge)
+  n_factors: 3
+
+# ---------------------------------------------------------------------
+# Backtest
+# ---------------------------------------------------------------------
+backtest:
+  window: 252                # estimation window T in trading days
+  frequency: "monthly"       # daily | weekly | biweekly | monthly | quarterly
+  cost_bps: 10.0             # one-way proportional cost, basis points
+  cost_model: "proportional" # proportional | linear_plus_impact
+  impact_coef: 5.0           # sqrt-impact coefficient (bp) for the 2nd model
+  no_trade_band: 0.0         # L1 threshold below which no rebalance occurs
+  risk_free: 0.0             # annual risk-free rate for Sharpe/Sortino
+  long_only: true
+  # Per-asset cap.  Without a cap the unconstrained minimum-variance solution
+  # parks ~83% of the book in the single lowest-variance asset (IEF), which
+  # collapses the effective number of bets to ~1.9 and makes the ENB
+  # comparison degenerate.  A 25% cap is the standard convention in the
+  # empirical risk-model literature and keeps the allocators comparable.
+  # The unconstrained case is retained as a robustness variant
+  # (experiments/run_robustness.py --max-weight none).
+  max_weight: 0.25
+
+# ---------------------------------------------------------------------
+# Estimators (covariance) and allocators (weights)
+# ---------------------------------------------------------------------
+estimators:
+  - sample
+  - ledoit_wolf
+  - constant_corr
+  - rmt_hard
+  - rmt_soft
+  - rmt_rie
+  - factor_model
+
+allocators:
+  - equal_weight
+  - inverse_variance
+  - minimum_variance
+  - risk_parity
+  - hrp
+  - max_diversification
+
+# Baseline strategies reported in every table
+baselines:
+  - "equal_weight"     # 1/N, the hard benchmark
+  - "60_40"            # 60% SPY / 40% bond sleeve, constructed in code
+
+# ---------------------------------------------------------------------
+# Robustness sweeps
+# ---------------------------------------------------------------------
+robustness:
+  # Window length T -> varies q = N/T
+  windows: [120, 252, 500, 756]
+  # Rebalance frequency
+  frequencies: ["weekly", "monthly", "quarterly"]
+  # Threshold multipliers applied to the fitted lambda_plus
+  lambda_plus_multipliers: [0.85, 0.9, 1.0, 1.1, 1.15]
+  # Transaction-cost levels in basis points
+  cost_bps: [0, 5, 10, 20, 40]
+  # Sigma estimation methods
+  sigma_methods: ["median_bulk", "mean_bulk", "max_eigen", "cdf_fit"]
+
+# ---------------------------------------------------------------------
+# Figures
+# ---------------------------------------------------------------------
+figures:
+  dpi: 200
+  format: "png"
+  style: "seaborn-v0_8-whitegrid"
+  figsize: [10, 6]
+  font_scale: 1.05
+
+# ---------------------------------------------------------------------
+# Reporting
+# ---------------------------------------------------------------------
+report:
+  # Number of top eigenvalues listed in the spectrum table
+  top_eigenvalues: 10
+  # Which covariance estimator is the reference for the spectrum figure
+  spectrum_estimator: "sample"

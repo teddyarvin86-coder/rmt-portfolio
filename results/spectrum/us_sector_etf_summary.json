@@ -1,0 +1,23 @@
+{
+  "universe": "us_sector_etf",
+  "window": 252,
+  "sigma_method": "median_bulk",
+  "window_start": "2024-12-30",
+  "window_end": "2025-12-31",
+  "n_assets": 16,
+  "n_obs": 252,
+  "q": 0.06349206349206349,
+  "sigma": 0.4310788283674102,
+  "lambda_minus": 0.10397862878967326,
+  "lambda_plus": 0.291276611523453,
+  "lambda_max": 8.59992158634682,
+  "n_signal": 7,
+  "n_noise": 9,
+  "signal_variance_share": 0.9192025218694997,
+  "noise_variance_share": 0.08079747813050031,
+  "effective_rank": 5.393951100184912,
+  "condition_number": 1114.2462800984283,
+  "top5_share": 0.8591672539482869,
+  "top10_share": 0.9627869591594422,
+  "ks_statistic_noise": 0.37177451042162724
+}

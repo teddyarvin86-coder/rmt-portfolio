@@ -1,0 +1,123 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below."
+title: "RMT Portfolio: Random Matrix Theory denoising of covariance matrices for portfolio construction"
+abstract: >-
+  An end-to-end empirical study of covariance-matrix estimation for portfolio
+  construction. Sample covariance is compared against Ledoit-Wolf linear
+  shrinkage, constant-correlation shrinkage, Marchenko-Pastur hard and soft
+  thresholding, nonlinear shrinkage (RIE/QuEST), and a PCA factor model, across
+  six allocators (equal weight, inverse variance, minimum variance, risk parity,
+  hierarchical risk parity, maximum diversification) and three market panels
+  (US sector ETFs, Chinese sector ETFs, and a high-aspect-ratio US single-stock
+  universe). Rolling out-of-sample backtests include proportional transaction
+  costs and turnover. The central finding is that ex-ante risk-forecast quality
+  (Patton QLIKE loss) discriminates between estimators where realised Sharpe
+  ratios do not: nonlinear shrinkage is the only estimator that improves
+  forecast accuracy consistently, by 15-21% across the three panels, with the
+  gain increasing in the aspect ratio q = N/T.
+authors:
+  - name: "RMT Portfolio contributors"
+version: 1.0.0
+date-released: "2025-12-31"
+license: MIT
+repository-code: "https://github.com/your-username/rmt-portfolio"
+keywords:
+  - quantitative-finance
+  - random-matrix-theory
+  - marchenko-pastur
+  - covariance-estimation
+  - nonlinear-shrinkage
+  - ledoit-wolf
+  - hierarchical-risk-parity
+  - risk-parity
+  - portfolio-optimisation
+  - eigenvalue-denoising
+  - backtesting
+  - qlike
+
+references:
+  - type: article
+    title: "Distribution of eigenvalues for some sets of random matrices"
+    authors:
+      - family-names: Marchenko
+        given-names: V. A.
+      - family-names: Pastur
+        given-names: L. A.
+    year: 1967
+    journal: "Mathematics of the USSR-Sbornik"
+    volume: 1
+    issue: 4
+    start: 457
+    end: 483
+
+  - type: article
+    title: "Noise dressing of financial correlation matrices"
+    authors:
+      - family-names: Laloux
+        given-names: L.
+      - family-names: Cizeau
+        given-names: P.
+      - family-names: Bouchaud
+        given-names: J.-P.
+      - family-names: Potters
+        given-names: M.
+    year: 1999
+    journal: "Physical Review Letters"
+    volume: 83
+    issue: 7
+    start: 1467
+    end: 1470
+
+  - type: article
+    title: "A well-conditioned estimator for large-dimensional covariance matrices"
+    authors:
+      - family-names: Ledoit
+        given-names: O.
+      - family-names: Wolf
+        given-names: M.
+    year: 2004
+    journal: "Journal of Multivariate Analysis"
+    volume: 88
+    issue: 2
+    start: 365
+    end: 411
+
+  - type: article
+    title: "Volatility forecast comparison using imperfect volatility proxies"
+    authors:
+      - family-names: Patton
+        given-names: A. J.
+    year: 2011
+    journal: "Journal of Econometrics"
+    volume: 160
+    issue: 1
+    start: 246
+    end: 256
+
+  - type: article
+    title: "Building diversification through hierarchical clustering"
+    authors:
+      - family-names: Lopez de Prado
+        given-names: M.
+    year: 2016
+    journal: "Journal of Portfolio Management"
+    volume: 42
+    issue: 4
+    start: 74
+    end: 85
+
+  - type: article
+    title: "The properties of equally weighted risk contribution portfolios"
+    authors:
+      - family-names: Maillard
+        given-names: S.
+      - family-names: Roncalli
+        given-names: T.
+      - family-names: Teiletche
+        given-names: J.
+    year: 2010
+    journal: "Journal of Portfolio Management"
+    volume: 36
+    issue: 4
+    start: 60
+    end: 70

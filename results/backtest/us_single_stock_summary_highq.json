@@ -1,0 +1,36 @@
+{
+  "universe": "us_single_stock",
+  "config": {
+    "window": 120,
+    "frequency": "monthly",
+    "cost_bps": 10.0,
+    "cost_model": "proportional",
+    "no_trade_band": 0.0,
+    "estimators": [
+      "sample",
+      "ledoit_wolf",
+      "constant_corr",
+      "rmt_hard",
+      "rmt_soft",
+      "rmt_rie",
+      "factor_model"
+    ],
+    "allocators": [
+      "equal_weight",
+      "inverse_variance",
+      "minimum_variance",
+      "risk_parity",
+      "hrp",
+      "max_diversification"
+    ]
+  },
+  "panel": {
+    "n_dates": 893,
+    "n_assets": 30,
+    "start": "2022-06-10",
+    "end": "2025-12-31"
+  },
+  "best_by_sharpe_net": "sample+max_diversification",
+  "best_sharpe_net": 1.4161815149062373,
+  "benchmark_sharpe": 1.1170530204791758
+}

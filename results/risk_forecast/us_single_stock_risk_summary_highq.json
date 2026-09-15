@@ -1,0 +1,20 @@
+{
+  "universe": "us_single_stock",
+  "window": 120,
+  "frequency": "monthly",
+  "max_weight": 0.25,
+  "sigma_method": "median_bulk",
+  "demean": true,
+  "panel": {
+    "n_dates": 893,
+    "n_assets": 30,
+    "start": "2022-06-10",
+    "end": "2025-12-31"
+  },
+  "best_by_qlike": [
+    "rmt_rie",
+    "max_diversification"
+  ],
+  "best_qlike": 0.1984078215408349,
+  "sample_minvar_qlike": 0.2263403982208068
+}

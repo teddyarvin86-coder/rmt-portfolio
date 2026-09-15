@@ -1,0 +1,20 @@
+{
+  "universe": "us_sector_etf",
+  "window": 252,
+  "frequency": "monthly",
+  "max_weight": 0.25,
+  "sigma_method": "median_bulk",
+  "demean": true,
+  "panel": {
+    "n_dates": 1894,
+    "n_assets": 16,
+    "start": "2018-06-20",
+    "end": "2025-12-31"
+  },
+  "best_by_qlike": [
+    "factor_model",
+    "max_diversification"
+  ],
+  "best_qlike": 0.25629294900937477,
+  "sample_minvar_qlike": 0.3104141692519528
+}

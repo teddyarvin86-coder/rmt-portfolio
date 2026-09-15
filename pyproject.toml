@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rmt-portfolio"
+version = "1.0.0"
+description = "Random Matrix Theory denoising of covariance matrices with minimum-variance, risk-parity and hierarchical risk parity portfolios"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Quantitative Portfolio Research" },
+]
+keywords = [
+    "quantitative-finance",
+    "random-matrix-theory",
+    "marchenko-pastur",
+    "hierarchical-risk-parity",
+    "risk-parity",
+    "covariance-estimation",
+    "portfolio-optimisation",
+    "eigenvalue-denoising",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "matplotlib>=3.7",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+# Interior-point solver used by the minimum-variance optimiser.  The code
+# degrades gracefully to an analytic fallback when cvxpy is absent, so this
+# is optional rather than required.
+optimisation = ["cvxpy>=1.4"]
+# Market data access.  akshare is the source actually used by the shipped
+# configuration (see src/rmt_portfolio/data/loader.py for why Yahoo/Sina
+# alternatives are or are not used).
+data = ["akshare>=1.12"]
+# Statistics extras used by the robustness checks.
+stats = ["statsmodels>=0.14"]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "tabulate>=0.9",
+]
+all = [
+    "cvxpy>=1.4",
+    "akshare>=1.12",
+    "statsmodels>=0.14",
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "tabulate>=0.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/rmt-portfolio"
+Documentation = "https://github.com/your-username/rmt-portfolio#readme"
+Repository = "https://github.com/your-username/rmt-portfolio"
+Issues = "https://github.com/your-username/rmt-portfolio/issues"
+
+[project.scripts]
+rmt-spectrum = "experiments.run_spectrum_analysis:main"
+rmt-backtest = "experiments.run_main_backtest:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["rmt_portfolio*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --tb=short"
+
+[tool.coverage.run]
+source = ["src/rmt_portfolio"]
+omit = ["*/tests/*"]

@@ -1,0 +1,20 @@
+{
+  "universe": "cn_sector_etf",
+  "window": 252,
+  "frequency": "monthly",
+  "max_weight": 0.25,
+  "sigma_method": "median_bulk",
+  "demean": true,
+  "panel": {
+    "n_dates": 1219,
+    "n_assets": 16,
+    "start": "2020-12-21",
+    "end": "2025-12-31"
+  },
+  "best_by_qlike": [
+    "rmt_rie",
+    "equal_weight"
+  ],
+  "best_qlike": 0.4374128306162702,
+  "sample_minvar_qlike": 0.6634485636338576
+}

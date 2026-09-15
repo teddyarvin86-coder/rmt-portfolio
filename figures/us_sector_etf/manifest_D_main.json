@@ -1,0 +1,7 @@
+{
+  "forecast_accuracy": "E:\\4.\u5927\u4e8c\\19.\u9879\u76ee2\\figures\\us_sector_etf\\fig_forecast_accuracy.png",
+  "forecast_qlike": "E:\\4.\u5927\u4e8c\\19.\u9879\u76ee2\\figures\\us_sector_etf\\fig_forecast_qlike.png",
+  "forecast_bias_time": "E:\\4.\u5927\u4e8c\\19.\u9879\u76ee2\\figures\\us_sector_etf\\fig_forecast_bias_time.png",
+  "enb_distribution": "E:\\4.\u5927\u4e8c\\19.\u9879\u76ee2\\figures\\us_sector_etf\\fig_enb_distribution.png",
+  "risk_contribution": "E:\\4.\u5927\u4e8c\\19.\u9879\u76ee2\\figures\\us_sector_etf\\fig_risk_contribution.png"
+}

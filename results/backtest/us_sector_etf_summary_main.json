@@ -1,0 +1,36 @@
+{
+  "universe": "us_sector_etf",
+  "config": {
+    "window": 252,
+    "frequency": "monthly",
+    "cost_bps": 10.0,
+    "cost_model": "proportional",
+    "no_trade_band": 0.0,
+    "estimators": [
+      "sample",
+      "ledoit_wolf",
+      "constant_corr",
+      "rmt_hard",
+      "rmt_soft",
+      "rmt_rie",
+      "factor_model"
+    ],
+    "allocators": [
+      "equal_weight",
+      "inverse_variance",
+      "minimum_variance",
+      "risk_parity",
+      "hrp",
+      "max_diversification"
+    ]
+  },
+  "panel": {
+    "n_dates": 1894,
+    "n_assets": 16,
+    "start": "2018-06-20",
+    "end": "2025-12-31"
+  },
+  "best_by_sharpe_net": "60_40",
+  "best_sharpe_net": 0.701178116162646,
+  "benchmark_sharpe": 0.701178116162646
+}

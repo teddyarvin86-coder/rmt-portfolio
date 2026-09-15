@@ -1,0 +1,8 @@
+{
+  "sweep": "universe",
+  "universe": "us_sector_etf",
+  "max_weight": 0.25,
+  "sweeps_completed": [
+    "universe"
+  ]
+}
